@@ -1,8 +1,7 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 2,
   "name": "Vacation Countdown",
-  "version": "v1",
-  "default_locale": "en",
+  "version": "1",
   "description": "A beautiful countdown to help you get excited for your next vacation.",
   "browser_action": { "default_title": "Have a good day" },
   "author": "Andy Bradbury",
