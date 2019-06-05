@@ -22,20 +22,35 @@ window.addEventListener('load', ()=> {
   // get current location data using vanilla JS
   let long;
   let lat;
+  let temperatureDescription = document.querySelector(".temperature-description");
+  let temperatureDegree = document.querySelector(".temperature-degree");
 
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position =>{
       long = position.coords.longitude;
       lat = position.coords.latitude;
 
-      const api = `https://api.darksky.net/forecast/93ffed5f34bbe89be13aa16f7cff06e7/-2.3448431,53.383696099999995`;
+      // Dark Sky don't allow you to use their API locally, so we're using a proxy to get around that. That's all.
+      const proxy = 'https://cors-anywhere.herokuapp.com/';
+
+      // Get the weather data from Dark Sky, adding query at the end to convert temperature to celsius
+      const api = `${proxy}https://api.darksky.net/forecast/93ffed5f34bbe89be13aa16f7cff06e7/${lat},${long}?units=si`;
+
+      // This is where we do the main API work
+      // We fetch the Dark Sky api info from the const we've set above
+      fetch(api)
+        // the data takes a little time to arrive, so we use .then below to say once we've got it to then do something with it
+        .then(response =>{
+          return response.json();
+        })
+        .then(data =>{
+          console.log(data);
+          // const {temperature, summary} = data.currently.temperature;
+          // Set DOM Elements from the API
+          temperatureDegree.textContent = data.currently.temperature;
+        })
     });
 
-    fetch(api)
-      // the data takes a little time to arrive, so we use .then below to say once we've got it to then do something with it
-      .then(response =>{
-
-      })
   }
 });
 
