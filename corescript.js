@@ -15,8 +15,7 @@ document.getElementById("daysUntil").innerHTML = days;
 
 
 /* START Dark Sky API */
-// Using this video as tutorial: https://www.youtube.com/watch?v=wPElVpR1rwA
-// Got this far: https://youtu.be/wPElVpR1rwA?t=1046
+// Implemented as in this video: https://www.youtube.com/watch?v=wPElVpR1rwA
 window.addEventListener('load', ()=> {
   let temperatureDegree = document.querySelector(".temperature-degree");
   let temperatureDescription = document.querySelector(".temperature-description");
@@ -31,18 +30,17 @@ window.addEventListener('load', ()=> {
   // We fetch the Dark Sky api info from the const we've set above
   fetch(api)
     // the data takes a little time to arrive, so we use .then below to say once we've got it to then do something with it
-    .then(response =>{
+    .then(response =>{ // "response" here is just a variable we're creating on the fly
+      // once we have the response, convert it to json so it can be used
       return response.json();
     })
+    // once we've converted to json, create a variable and access properties we need
     .then(data =>{
-      // console.log(data);
-
-      // Set DOM Elements from the API
       temperatureDegree.textContent = Math.round(data.currently.temperature);
       temperatureDescription.textContent = data.currently.summary;
-
     })
-
+    
+  // TODO: Need to add icon based on the current weather: https://youtu.be/wPElVpR1rwA?t=1583
 });
 
 /* END Dark Sky API */
