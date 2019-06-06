@@ -38,9 +38,17 @@ window.addEventListener('load', ()=> {
     .then(data =>{
       temperatureDegree.textContent = Math.round(data.currently.temperature);
       temperatureDescription.textContent = data.currently.summary;
+        // Set icon
+        setIcons(data.currently.icon, document.querySelector('.icon'));
     })
-    
+
   // TODO: Need to add icon based on the current weather: https://youtu.be/wPElVpR1rwA?t=1583
+  function setIcons(icon, iconID){
+    const skycons = new Skycons({color: "white"});
+    const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+    skycons.play();
+    return skycons.set(iconID, Skycons[currentIcon]);
+  }
 });
 
 /* END Dark Sky API */
