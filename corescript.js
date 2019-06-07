@@ -17,7 +17,7 @@ document.getElementById("daysUntil").innerHTML = days;
 /* START Dark Sky API */
 // Implemented as in this video: https://www.youtube.com/watch?v=wPElVpR1rwA
 window.addEventListener('load', ()=> {
-  let temperatureDegree = document.querySelector(".temperature-degree");
+  let temperatureDegree = document.querySelector(".temperature-degree span");
   let temperatureDescription = document.querySelector(".temperature-description");
 
   // Dark Sky don't allow you to use their API locally, so we're using a proxy to get around that. That's all.
