@@ -8,13 +8,24 @@
   <body>
     <div class="bg-image"></div>
 
-    <div class="bg-text">
-      <h1><span id="daysUntil"></span> Days Until Holiday</h1>
-      <div><span class="temperature-description"></span></div>
-      <p><span class="temperature-degree"></span>°C</p>
-
-      <p>Weather data <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></p>
+    <div class="info-box">
+      <div class="location-title">
+        <h2><span id="daysUntil"></span> days until your trip to...</h2>
+        <h1>Portinatx</h1>
+      </div>
+      <div class="local-info">
+        <div class="temperature-wrapper">
+          <canvas class="icon" width="40" height="40"></canvas>
+          <div class="temperature-info">
+            <p class="temperature-degree"><span></span>°C</p>
+          </div>
+        </div>
+        <p class="temperature-description"></p>
+        <p class="darksky-credit"><small>Weather data <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></small></p>
+      </div>
     </div>
+
+    <script src="skycons.js"></script>
     <script src="corescript.js"></script>
   </body>
 </html>
