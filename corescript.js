@@ -18,7 +18,6 @@ document.getElementById("daysUntil").innerHTML = days;
 // Implemented as in this video: https://www.youtube.com/watch?v=wPElVpR1rwA
 window.addEventListener('load', ()=> {
   let temperatureDegree = document.querySelector(".temperature-degree span");
-  let temperatureDescription = document.querySelector(".temperature-description");
 
   // Dark Sky don't allow you to use their API locally, so we're using a proxy to get around that. That's all.
   const proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -37,14 +36,12 @@ window.addEventListener('load', ()=> {
     // once we've converted to json, create a variable and access properties we need
     .then(data =>{
       temperatureDegree.textContent = Math.round(data.currently.temperature);
-      temperatureDescription.textContent = data.currently.summary;
         // Set icon
         setIcons(data.currently.icon, document.querySelector('.icon'));
     })
 
-  // TODO: Need to add icon based on the current weather: https://youtu.be/wPElVpR1rwA?t=1583
   function setIcons(icon, iconID){
-    const skycons = new Skycons({color: "white"});
+    const skycons = new Skycons({color: "#6B4E71"});
     const currentIcon = icon.replace(/-/g, "_").toUpperCase();
     skycons.play();
     return skycons.set(iconID, Skycons[currentIcon]);
