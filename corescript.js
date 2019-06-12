@@ -1,22 +1,15 @@
-/* START Date Calculations */
-// Set the date we're counting down to
-var countDownDate = new Date("Sept 15, 2019").getTime();
-var now = new Date().getTime();
-
-// Find the distance between now and the count down date
-var distance = countDownDate - now;
-
-// Time calculations for days, hours, minutes and seconds
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-document.getElementById("daysUntil").innerHTML = days;
-
-/* END Date Calculations */
-
-
-/* START Dark Sky API */
-// Implemented as in this video: https://www.youtube.com/watch?v=wPElVpR1rwA
 window.addEventListener('load', ()=> {
+  /* START Date Calculations */
+  var countDownDate = new Date("Sept 15, 2019").getTime(); // set the date we're counting down to
+  var now = new Date().getTime();
+  var distance = countDownDate - now; // find the distance between now and the count down date
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24)); // time calculations for days, hours, minutes and seconds
+
+  document.getElementById("daysUntil").innerHTML = days;
+  /* END Date Calculations */
+
+  /* START Dark Sky API */
+  // Implemented as in this video: https://www.youtube.com/watch?v=wPElVpR1rwA
   let temperatureDegree = document.querySelector(".temperature-degree span");
 
   // Dark Sky don't allow you to use their API locally, so we're using a proxy to get around that. That's all.
@@ -46,6 +39,5 @@ window.addEventListener('load', ()=> {
     skycons.play();
     return skycons.set(iconID, Skycons[currentIcon]);
   }
+  /* END Dark Sky API */
 });
-
-/* END Dark Sky API */
